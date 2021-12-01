@@ -6,36 +6,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>MatchMaker 2021</title>
-    <link rel="stylesheet" href="MatchMaker.css">
-    <script src="MatchMaker.js"></script>
+    <title>Health Insurance Risk Calculater</title>
 
 </head>
 
-<body onload="initApplication()">
-    <h1> Welcome to The Best Matchmaker in 2021</h1>
-    <h2>Helping you find love when you least expect it</h2>
-    <h3>DazzlingDavid.Co</h3>
+<body>
+    <h1>Health Insurance Risk Calculater</h1>
 
-    <p>You will be ask 5 questions that will then
-        determine how compatible you are... with me!
-        For each of the following questions please
-        answer with numbers 1-5 only. 5 if you strongly
-        agree, 4 if you agree, 3 if you're inbetween,
-        2 if you disagree, and 1 if you strongly disagree.
-
-        If you do not get a good score do not be too upset,
-        we can still be friends. :)<p>
+    <p>Instuctions here...<p>
 
 <!--Questions -->
 
-            <label>Movies are the best.</label><br />
-            <select id="q1">
-                <option value="5">Strongly agree</option>
-                <option value="4">Agree</option>
-                <option value="3"> Inbetween</option>
-                <option value="2"> Disagree</option>
-                <option value="1">Strongly Disagree</option>
+            <label>What is your current age?</label><br />
+            <select id="age">
+                <option value="0">Less than 30</option>
+                <option value="10">30 to 40</option>
+                <option value="20">45 to 60</option>
+                <option value="30">Greater than 60</option>
             </select>
 
             <br /><br /><br />
@@ -83,84 +70,15 @@
             </select>
 
             <br /><br /><br />
-            <button onclick="calculateCompatibility()">Calculate Compatibility</button>
-            <p id="compatibility"></p>
+            <button onclick="calculateRisk()">Calculate Risk</button>
+            <p id="risk"></p>
             
             <script>
-                console.log("Starting The Best MatchMaker")
+                console.log("Starting Health Insure Risk Calc...")
 
-                function calculateCompatibility() {
-                    console.log("calculateCompatibility()")
+                function calculateRisk() {
+                    console.log("calculateRisk()");
 
-                    const DesireResponse = [
-                        4,
-                        3,
-                        3,
-                        5,
-                        5,
-                    ]
-                    const MaxScore = 25
-
-                    let question1Response = document.getElementById('q1').selectedOptions[0].value;
-                    let question2Response = document.getElementById('q2').selectedOptions[0].value;
-                    let question3Response = document.getElementById('q3').selectedOptions[0].value;
-                    let question4Response = document.getElementById('q4').selectedOptions[0].value;
-                    let question5Response = document.getElementById('q5').selectedOptions[0].value;
-
-                    console.log("Question 1 Answers:");
-                    console.log(document.getElementById("q1").selectedOptions[0].text);
-                    console.log(document.getElementById("q1").selectedOptions[0].value);
-                    console.log(question1Response);
-
-                    console.log("Question 2 Answers:");
-                    console.log(document.getElementById("q2").selectedOptions[0].text);
-                    console.log(document.getElementById("q2").selectedOptions[0].value);
-                    console.log(question2Response);
-
-                    console.log("Question 3 Answers:");
-                    console.log(document.getElementById("q3").selectedOptions[0].text);
-                    console.log(document.getElementById("q3").selectedOptions[0].value);
-                    console.log(question3Response);
-
-                    console.log("Question 4 Answers:");
-                    console.log(document.getElementById("q4").selectedOptions[0].text);
-                    console.log(document.getElementById("q4").selectedOptions[0].value);
-                    console.log(question4Response);
-
-                    console.log("Question 5 Answers:");
-                    console.log(document.getElementById("q5").selectedOptions[0].text);
-                    console.log(document.getElementById("q5").selectedOptions[0].value);
-                    console.log(question5Response);
-
-                    let question1Compatibility = 5 - Math.abs(question1Response - DesireResponse[0])
-                    let question2Compatibility = 5 - Math.abs(question2Response - DesireResponse[1])
-                    let question3Compatibility = 5 - Math.abs(question3Response - DesireResponse[2])
-                    let question4Compatibility = 5 - Math.abs(question4Response - DesireResponse[3])
-                    let question5Compatibility = 5 - Math.abs(question5Response - DesireResponse[4])
-
-                    console.log("c1=" + question1Compatibility);
-                    console.log("c2=" + question2Compatibility);
-                    console.log("c3=" + question3Compatibility);
-                    console.log("c4=" + question4Compatibility);
-                    console.log("c4=" + question5Compatibility);
-
-                    let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility +
-                        question4Compatibility + question5Compatibility;
-
-                    totalCompatibility *= 100 / MaxScore;
-                    totalCompatibility = Math.round(totalCompatibility);
-                    console.log("totalCompatibility=" + totalCompatibility);
-
-                    document.getElementById("compatibility").innerHTML = "Your compatibility is:" + totalCompatibility;
-
-                    console.log("Print Out Remark")
-                    
-                    if (totalCompatibility >= 80)
-                        document.getElementById("compatibility").innerHTML = "Your compatibility is: " + totalCompatibility + " ... Lets get to know eachother ;)"
-                    else if (totalCompatibility <= 79)
-                        document.getElementById("compatibility").innerHTML = "Your compatibility is: " + totalCompatibility + " ... Sorry you didnt make the cut :( We can be friends though!"
-                    else if (totalCompatibility <=49)
-                        document.getElementById("compatibility").innerHTML = "Your compatibility is: " + totalCompatibility + " ... Sorry were not compatible :("
                 }
 
             </script>
